@@ -1,20 +1,25 @@
 
-i=0;
-j=1;
-x=[3,2,4,6,1];
-swapped =false;
-while (swapped){
-    swapped =false;
+
+x=[6,2,4,3,1];
+len = 5 - 1; //change 5 to length of array
+
+print "Original array: ";
+print x;
+print "Bubble Sort: ";
+
+swapped ="t";
+while (swapped == "t"){
+    swapped ="f";
     i=0;
     j=1;
-    len = 5 - 1; //change 5 to length of array
     while (i<len){
 
         if (x[i]>x[j]){ 
-            y=x[j]; 
-            x[j]=x[i]; 
-            x[i]=y;
-            swapped = false
+            y=x[i]; 
+            x[i]=x[j]; 
+            x[j]=y;
+            swapped = "t";
+            print x
         };
     
         i = i + 1;
@@ -22,4 +27,5 @@ while (swapped){
     };
     len = len - 1
 };
+print "Swapped array: ";
 print x

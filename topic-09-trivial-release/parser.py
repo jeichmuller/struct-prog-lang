@@ -353,7 +353,6 @@ def test_parse_function_literal():
         g(4)
         """
     ast = parse(tokenize(code))
-    print(ast)
     assert ast == {
         "tag": "program",
         "statements": [

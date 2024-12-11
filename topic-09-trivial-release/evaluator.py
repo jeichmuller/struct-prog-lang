@@ -164,7 +164,6 @@ def evaluate(ast, environment):
             return None, False
 
     if ast["tag"] == "complex":
-        print(ast)
         base, _ = evaluate(ast["base"], environment)
         index, _ = evaluate(ast["index"], environment)
         if index == None:
@@ -187,9 +186,7 @@ def evaluate(ast, environment):
             target_index = target["value"] 
         elif target["tag"] == "complex":
             base, _ = evaluate(target["base"], environment)
-            print(f"Target Base = {[base]}")
             index, _ = evaluate(target["index"], environment)
-            print(f"Target Index = {[index]}")
             assert type(index) in [int, float, str], f"Unknown index type [{index}]"
             if type(index) in [int, float]:
                 assert int(index) == index

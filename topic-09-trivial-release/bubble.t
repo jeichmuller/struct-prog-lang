@@ -7,9 +7,9 @@ print "Original array: ";
 print x;
 print "Bubble Sort: ";
 
-swapped ="t";
-while (swapped == "t"){
-    swapped ="f";
+swapped =true;
+while (swapped == true){
+    swapped =false;
     i=0;
     j=1;
     while (i<len){
@@ -18,7 +18,7 @@ while (swapped == "t"){
             y=x[i]; 
             x[i]=x[j]; 
             x[j]=y;
-            swapped = "t";
+            swapped = true;
             print x
         };
     

@@ -46,6 +46,10 @@ def evaluate(ast, environment):
         left_value, _ = evaluate(ast["left"], environment)
         right_value, _ = evaluate(ast["right"], environment)
         return left_value * right_value, False
+    if ast["tag"] == "%":
+        left_value, _ = evaluate(ast["left"], environment)
+        right_value, _ = evaluate(ast["right"], environment)
+        return left_value % right_value, False
     if ast["tag"] == "/":
         left_value, _ = evaluate(ast["left"], environment)
         right_value, _ = evaluate(ast["right"], environment)
@@ -211,6 +215,13 @@ def evaluate(ast, environment):
             value, return_chain = evaluate(ast["value"], environment)
             return value, True
         return None, True
+    
+    if ast["tag"] == "boolean":
+        if ast["value"] == 0:
+            return 0, False
+        elif ast["value"] == 1:
+            return 1, False
+        return None, False
 
     assert False, f"Unknown tag [{ast['tag']}] in AST"
 
@@ -274,6 +285,12 @@ def test_evaluate_division():
     equals("4/2", {}, 2, {})
     equals("8/4/2", {}, 1, {})
 
+def test_evaluate_modulo():
+    print("test evaluate modulo")
+    equals("1%1", {}, 0, {})
+    equals("20%10", {}, 0, {})
+    equals("13%10", {}, 3, {})
+    equals("X%Y", {"X": 5.6, "Y": 1}, .5999999999999996)
 
 def test_evaluate_negation():
     print("test evaluate negation")
@@ -520,6 +537,7 @@ if __name__ == "__main__":
     test_evaluate_subtraction()
     test_evaluate_multiplication()
     test_evaluate_division()
+    test_evaluate_modulo()
     test_evaluate_negation()
     test_evaluate_print_statement()
     test_evaluate_if_statement()

@@ -24,6 +24,7 @@ patterns = [
     [r"or", "||"],  # alternate for ||
     [r"not", "!"],  # alternate for !
     [r"[a-zA-Z_][a-zA-Z0-9_]*", "identifier"],  # identifiers
+    [r"\%", "%"],
     [r"\+", "+"],
     [r"\-", "-"],
     [r"\*", "*"],

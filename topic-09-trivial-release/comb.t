@@ -1,3 +1,4 @@
+// Jay Eichmuller
 // Comb Sort
 
 function getNextGap(gap){
